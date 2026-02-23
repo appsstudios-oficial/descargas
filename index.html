@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Zona Apps Pro - Generando Link</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #f4f7f9; }
+        .box { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
+        h1 { color: #3b82f6; }
+        #timer { font-size: 48px; font-weight: bold; color: #1e40af; margin: 20px 0; }
+        .btn { display: none; background: #3b82f6; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Zona Apps Pro</h1>
+        <p>Tu enlace se está generando de forma segura...</p>
+        <div id="timer">10</div>
+        <a id="downloadBtn" class="btn" href="TU_LINK_DE_UPFILES_AQUI">¡DESCARGAR AHORA!</a>
+    </div>
+
+    <script>
+        let count = 10;
+        const timer = document.getElementById('timer');
+        const btn = document.getElementById('downloadBtn');
+        
+        const interval = setInterval(() => {
+            count--;
+            timer.innerText = count;
+            if (count === 0) {
+                clearInterval(interval);
+                timer.style.display = 'none';
+                btn.style.display = 'inline-block';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
