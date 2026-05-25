@@ -2,40 +2,110 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Zona Apps Pro - Generando Link</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descarga de Lista M3U</title>
     <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #f4f7f9; }
-        .box { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
-        h1 { color: #3b82f6; }
-        #timer { font-size: 48px; font-weight: bold; color: #1e40af; margin: 20px 0; }
-        .btn { display: none; background: #3b82f6; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        /* Estilos alineados con la estética oscura y roja del blog */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: block;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border-top: 4px solid #cc0000;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin-bottom: 25px;
+        }
+
+        /* Estilos de los botones */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Botón de carga (Deshabilitado) */
+        #btn-countdown {
+            background-color: #2a2a2a;
+            color: #888888;
+            cursor: not-allowed;
+            border: 1px solid #3a3a3a;
+        }
+
+        /* Botón de destino (Rojo brillante al activarse) */
+        #btn-link {
+            display: none; /* Oculto al principio */
+            background-color: #cc0000;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(204, 0, 0, 0.3);
+        }
+
+        #btn-link:hover {
+            background-color: #ff0000;
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>Zona Apps Pro</h1>
-        <p>Tu enlace se está generando de forma segura...</p>
-        <div id="timer">10</div>
-        <a id="downloadBtn" class="btn"href="https://www.mediafire.com/file/jiepo5j8romzey0/Whatsapp_Plus__V4.2.6.apk/file">¡DESCARGAR AHORA!</a>
+
+    <div class="container">
+        <h2>Obteniendo recurso seguro</h2>
+        <p>Por favor, aguarde un instante mientras se procesa el enlace...</p>
+        
+        <button id="btn-countdown" class="btn">Espere <span id="countdown">5</span> segundos...</button>
+        
+        <a id="btn-link" href="https://archivosm3uindex.blogspot.com/2026/05/nueva-lista.html" target="_blank" class="btn">Nueva Lista Mayo</a>
     </div>
 
     <script>
-        let count = 10;
-        const timer = document.getElementById('timer');
-        const btn = document.getElementById('downloadBtn');
-        
+        // Lógica de la cuenta regresiva
+        let seconds = 5;
+        const countdownSpan = document.getElementById('countdown');
+        const btnCountdown = document.getElementById('btn-countdown');
+        const btnLink = document.getElementById('btn-link');
+
         const interval = setInterval(() => {
-            count--;
-            timer.innerText = count;
-            if (count === 0) {
+            seconds--;
+            countdownSpan.textContent = seconds;
+
+            if (seconds <= 0) {
                 clearInterval(interval);
-                timer.style.display = 'none';
-                btn.style.display = 'inline-block';
+                // Ocultar botón de espera y mostrar el botón de destino
+                btnCountdown.style.display = 'none';
+                btnLink.style.display = 'inline-block';
             }
         }, 1000);
     </script>
+
 </body>
-
 </html>
-
-
